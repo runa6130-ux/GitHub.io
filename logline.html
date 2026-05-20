@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGLINE FORMULA - FILM THEORY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 十字サークル配置用の計算（4要素、r = 130px、中心を基準に配置） */
+        .step-node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .list-item {
+            transition: all 0.2s ease;
+        }
+
+        /* アニメーション用 */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-[#111111] font-sans antialiased min-h-screen flex flex-col justify-between tracking-wide">
+
+    <header class="border-b border-gray-200 bg-white px-6 py-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-base font-bold tracking-widest text-[#111111]">LOGLINE FORMULA</h1>
+            <p class="text-[10px] text-gray-400 font-medium tracking-wider uppercase mt-0.5">The 4 Pillars of Storytelling / Film Theory</p>
+        </div>
+        <a href="eizoron.html" class="text-xs text-gray-400 hover:text-black uppercase tracking-widest transition-colors underline underline-offset-4">
+            Back to Topics
+        </a>
+    </header>
+
+    <main class="max-w-6xl w-full mx-auto px-6 py-12 flex-grow flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-12">
+        
+        <div class="order-1 relative w-[340px] h-[340px] flex-shrink-0 flex items-center justify-center select-none bg-white rounded-xl border border-gray-200 shadow-sm">
+            
+            <div class="absolute w-[260px] h-[1px] border-t border-dashed border-gray-200 pointer-events-none"></div>
+            <div class="absolute h-[260px] w-[1px] border-l border-dashed border-gray-200 pointer-events-none"></div>
+
+            <div class="absolute rounded-full border border-gray-100 pointer-events-none" style="width: 260px; height: 260px;"></div>
+
+            <div onclick="selectStep(1)" id="node-1" class="step-node" style="left: 170px; top: 40px;">
+                <span class="flex items-center justify-center w-9 h-9 rounded-full border-2 font-bold text-sm shadow-sm bg-white border-[#2B54A4] text-[#2B54A4]">1</span>
+            </div>
+            <div onclick="selectStep(2)" id="node-2" class="step-node" style="left: 300px; top: 170px;">
+                <span class="flex items-center justify-center w-9 h-9 rounded-full border-2 font-bold text-sm bg-white border-gray-200 text-gray-400">2</span>
+            </div>
+            <div onclick="selectStep(3)" id="node-3" class="step-node" style="left: 170px; top: 300px;">
+                <span class="flex items-center justify-center w-9 h-9 rounded-full border-2 font-bold text-sm bg-white border-gray-200 text-gray-400">3</span>
+            </div>
+            <div onclick="selectStep(4)" id="node-4" class="step-node" style="left: 40px; top: 170px;">
+                <span class="flex items-center justify-center w-9 h-9 rounded-full border-2 font-bold text-sm bg-white border-gray-200 text-gray-400">4</span>
+            </div>
+
+            <div class="absolute w-[130px] h-[130px] rounded-full bg-white border border-gray-100 shadow-sm flex flex-col items-center justify-center pointer-events-none z-10 text-center px-1">
+                <span id="center-num" class="text-[9px] font-mono font-bold text-gray-400 tracking-wider">PART 1</span>
+                <span id="center-name" class="text-xs font-extrabold tracking-widest text-gray-800 mt-1 uppercase" style="color: #2B54A4;">PROTAGONIST</span>
+                <span id="center-jp" class="text-[10px] text-gray-500 font-medium mt-0.5">誰が (主人公)</span>
+            </div>
+        </div>
+
+        <div class="order-2 lg:order-3 flex-grow w-full bg-white border border-gray-200 shadow-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between min-h-[300px] lg:min-h-[340px]">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                        <span id="detail-step" class="px-3 py-1 rounded text-xs font-bold text-white uppercase tracking-wider block text-center" style="background-color: #2B54A4;">
+                            1. PROTAGONIST / 誰が (主人公)
+                        </span>
+                        <span id="detail-subtitle" class="text-xs font-semibold text-gray-500 px-2 py-1 rounded bg-gray-100 text-center block">
+                            「誰が」を定義する
+                        </span>
+                    </div>
+                    <span id="detail-english" class="text-xs font-mono font-bold text-gray-400 hidden sm:inline">
+                        "Character & Status"
+                    </span>
+                </div>
+                
+                <p id="detail-desc" class="text-sm text-gray-700 leading-relaxed font-normal mt-6 fade-in">
+                    ログラインの起点となる主人公を表現します。単なる名前ではなく、『臆病な保安官』や『引退した暗殺者』のように、本質を表す『性格・弱点・状況』をワンフレーズで肉付けするのが極意です。
+                </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-dashed border-gray-200">
+                <div class="flex items-start space-x-2">
+                    <span class="text-xs font-bold text-[#2B54A4] bg-blue-50 px-2 py-0.5 rounded shrink-0">ヒント</span>
+                    <span id="detail-example" class="text-xs font-medium text-gray-600 leading-relaxed">
+                        ログライン記述例: 「孤独を愛する一流の暗殺者が…」
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-3 lg:order-2 w-full sm:w-[280px] shrink-0 bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">4 Pillars List</h3>
+            <div class="flex flex-col gap-2 text-xs">
+                
+                <div onclick="selectStep(1)" id="li-1" class="list-item p-2.5 rounded-lg flex flex-col cursor-pointer bg-blue-50 font-bold text-black border-l-4" style="border-color: #2B54A4;">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3">1.</span><span>Protagonist（誰が）</span>
+                    </div>
+                    <span class="text-[10px] text-gray-500 font-normal pl-4 mt-0.5">主人公の性格、置かれた状況</span>
+                </div>
+
+                <div onclick="selectStep(2)" id="li-2" class="list-item p-2.5 rounded-lg flex flex-col cursor-pointer hover:bg-gray-50 text-gray-600">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 text-[#2B54A4]">2.</span><span>Objective / Goal（何を）</span>
+                    </div>
+                    <span class="text-[10px] text-gray-400 font-normal pl-4 mt-0.5">達成すべき主人公の目的</span>
+                </div>
+
+                <div onclick="selectStep(3)" id="li-3" class="list-item p-2.5 rounded-lg flex flex-col cursor-pointer hover:bg-gray-50 text-gray-600">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 text-[#2B54A4]">3.</span><span>Obstacle / Conflict（壁は）</span>
+                    </div>
+                    <span class="text-[10px] text-gray-400 font-normal pl-4 mt-0.5">立ちはだかる最大の障害・葛藤</span>
+                </div>
+
+                <div onclick="selectStep(4)" id="li-4" class="list-item p-2.5 rounded-lg flex flex-col cursor-pointer hover:bg-gray-50 text-gray-600">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 text-[#2B54A4]">4.</span><span>Inciting Incident（契機）</span>
+                    </div>
+                    <span class="text-[10px] text-gray-400 font-normal pl-4 mt-0.5">引き金となる出来事・イベント</span>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-gray-200 bg-white py-4 text-center text-[10px] text-gray-400 tracking-wider">
+        &copy; FILM THEORY DIGITAL ARCHIVE
+    </footer>
+
+    <script>
+        const slideSteps = {
+            1: { num: "PART 1", name: "PROTAGONIST", jp: "誰が (主人公)", subtitle: "「誰が」を定義する", english: "Character & Status", desc: "ログラインの起点となる主人公を表現します。単なる名前ではなく、『臆病な保安官』や『引退した暗殺者』のように、本質を表す『性格・弱点・状況』をワンフレーズで肉付けするのが極意です。", example: "ログライン記述例: 「孤独を愛する一流の暗殺者が…」" },
+            2: { num: "PART 2", name: "OBJECTIVE / GOAL", jp: "何を求めて (目的)", subtitle: "「何を達成しようとするのか」", english: "Want & Destination", desc: "主人公がその物語の中で目指す、具体的で理解しやすい『究極の目標』。目的が魅力的かつ明確（命を守る、家族を救う、愛を勝ち取るなど）であるほど、1行で読者の心を掴むことができます。", example: "ログライン記述例: 「…人質に取られた愛娘を救うため…」" },
+            3: { num: "PART 3", name: "OBSTACLE / CONFLICT", jp: "どんな壁があるか (障害)", subtitle: "「何がそれを阻むのか」", english: "Antagonist & Risk", desc: "目的達成を極めて困難にする『最大の障壁（敵、時間制限、環境、自身の弱点）』。障害が大きければ大きいほど、ログラインに強烈な葛藤（サスペンス）とワクワク感が生まれます。", example: "ログライン記述例: 「…武装テロリストに占拠された超高層ビルの中で…」" },
+            4: { num: "PART 4", name: "INCITING INCIDENT", jp: "何がきっかけで (契機)", subtitle: "「なぜ物語が始まったのか」", english: "Trigger Event", desc: "退屈な、あるいは不満がありつつも安定していた『日常』を一瞬でぶち壊し、主人公が行動を起こさざるを得なくなった『突発的な事件・出会い』。これが全ての引き金となります。", example: "ログライン記述例: 「…ひょんなことから謎の機密ディスクを拾ってしまい…」" }
+        };
+
+        let currentActive = 1;
+
+        function selectStep(stepNum) {
+            const prevNode = document.getElementById(`node-${currentActive}`);
+            if (prevNode) {
+                const innerSpan = prevNode.querySelector('span');
+                innerSpan.className = "flex items-center justify-center w-9 h-9 rounded-full border-2 font-bold text-sm bg-white border-gray-200 text-gray-400";
+            }
+
+            const prevLi = document.getElementById(`li-${currentActive}`);
+            if (prevLi) {
+                prevLi.className = "list-item p-2.5 rounded-lg flex flex-col cursor-pointer hover:bg-gray-50 text-gray-600";
+                const numSpan = prevLi.querySelector('span:first-child font-bold');
+                if(numSpan) numSpan.className = "w-3 text-[#2B54A4]";
+            }
+
+            currentActive = stepNum;
+            const activeNode = document.getElementById(`node-${stepNum}`);
+            if (activeNode) {
+                const innerSpan = activeNode.querySelector('span');
+                innerSpan.className = "flex items-center justify-center w-9 h-9 rounded-full border-2 font-bold text-sm shadow-md bg-white border-[#2B54A4] text-[#2B54A4] scale-110";
+            }
+
+            const activeLi = document.getElementById(`li-${stepNum}`);
+            if (activeLi) {
+                activeLi.className = "list-item p-2.5 rounded-lg flex flex-col cursor-pointer bg-blue-50 font-bold text-black border-l-4";
+                activeLi.style.borderColor = "#2B54A4";
+            }
+
+            const data = slideSteps[stepNum];
+
+            document.getElementById('center-num').innerText = data.num;
+            document.getElementById('center-name').innerText = data.name;
+            document.getElementById('center-jp').innerText = data.jp;
+
+            document.getElementById('detail-step').innerText = `${stepNum}. ${data.name} / ${data.jp}`;
+            document.getElementById('detail-subtitle').innerText = data.subtitle;
+            document.getElementById('detail-english').innerText = `"${data.english}"`;
+            
+            const detailDesc = document.getElementById('detail-desc');
+            detailDesc.classList.remove('fade-in');
+            void detailDesc.offsetWidth; 
+            detailDesc.innerText = data.desc;
+            detailDesc.classList.add('fade-in');
+
+            document.getElementById('detail-example').innerText = data.example;
+        }
+
+        window.onload = function() {
+            selectStep(1);
+        };
+    </script>
+</body>
+</html>
