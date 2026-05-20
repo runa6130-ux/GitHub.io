@@ -10,9 +10,8 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             letter-spacing: 0.05em;
         }
-        /* 時間割のグリッドの高さを均等にするための微調整 */
         .timetable-cell {
-            min-height: 90px;
+            min-height: 95px;
             transition: all 0.2s ease;
         }
     </style>
@@ -39,28 +38,48 @@
             <div class="grid grid-cols-6 border-b border-gray-100">
                 <div class="flex flex-col justify-center items-center bg-gray-50 border-r border-gray-100 text-[11px] font-bold text-gray-400">
                     <span>1限</span>
-                    <span class="text-[9px] font-mono font-normal mt-0.5">09:10-10:50</span>
-                </div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-            </div>
-
-            <div class="grid grid-cols-6 border-b border-gray-100">
-                <div class="flex flex-col justify-center items-center bg-gray-50 border-r border-gray-100 text-[11px] font-bold text-gray-400">
-                    <span>2限</span>
-                    <span class="text-[9px] font-mono font-normal mt-0.5">11:05-12:45</span>
+                    <span class="text-[9px] font-mono font-normal mt-0.5">09:10-10:40</span>
                 </div>
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
                 
                 <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
-                    <a href="eizoron.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
-                        <span class="text-xs font-bold text-[#111111]">映像論</span>
-                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Film Theory</span>
+                    <a href="career.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">キャリア開発F</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Career F</span>
+                    </a>
+                </div>
+                
+                <div class="timetable-cell p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
+            </div>
+
+            <div class="grid grid-cols-6 border-b border-gray-100">
+                <div class="flex flex-col justify-center items-center bg-gray-50 border-r border-gray-100 text-[11px] font-bold text-gray-400">
+                    <span>2限</span>
+                    <span class="text-[9px] font-mono font-normal mt-0.5">10:50-12:20</span>
+                </div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="music.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">音楽・芸術A</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Music & Art A</span>
+                    </a>
+                </div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="advertising.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">広告論</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Advertising</span>
+                    </a>
+                </div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="modern_society.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">現代日本と欧米</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Japan & West</span>
                     </a>
                 </div>
                 
@@ -70,10 +89,23 @@
             <div class="grid grid-cols-6 border-b border-gray-100">
                 <div class="flex flex-col justify-center items-center bg-gray-50 border-r border-gray-100 text-[11px] font-bold text-gray-400">
                     <span>3限</span>
-                    <span class="text-[9px] font-mono font-normal mt-0.5">13:40-15:20</span>
+                    <span class="text-[9px] font-mono font-normal mt-0.5">13:10-14:40</span>
                 </div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="global_info.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">国際情報演習(3)</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Global Info 3</span>
+                    </a>
+                </div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="eizoron.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">映像論</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Film Theory</span>
+                    </a>
+                </div>
+                
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
                 <div class="timetable-cell p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
@@ -82,22 +114,35 @@
             <div class="grid grid-cols-6">
                 <div class="flex flex-col justify-center items-center bg-gray-50 border-r border-gray-100 text-[11px] font-bold text-gray-400">
                     <span>4限</span>
-                    <span class="text-[9px] font-mono font-normal mt-0.5">15:35-17:15</span>
+                    <span class="text-[9px] font-mono font-normal mt-0.5">14:50-16:20</span>
                 </div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="animation.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">アニメーション技術</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">Animation Tech</span>
+                    </a>
+                </div>
+                
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
                 <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
-                <div class="timetable-cell border-r border-gray-100 p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
+                
+                <div class="timetable-cell border-r border-gray-100 p-1 flex bg-gray-50 hover:bg-gray-100">
+                    <a href="3dcg.html" class="w-full h-full flex flex-col justify-center items-center text-center p-2 rounded-lg">
+                        <span class="text-xs font-bold text-[#111111]">3D-CG技術</span>
+                        <span class="text-[9px] text-gray-400 font-medium tracking-wider uppercase mt-1">3D-CG Tech</span>
+                    </a>
+                </div>
+                
                 <div class="timetable-cell p-2 flex items-center justify-center text-center text-xs text-gray-300">ー</div>
             </div>
 
         </div>
+
         <div class="mt-8">
             <h2 class="text-[10px] text-gray-400 font-bold tracking-widest uppercase mb-3">University Links</h2>
-            
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                
-                <a href="https://kinjo.manaba.jp/ct/home" target="_blank" class="bg-white border border-gray-200 rounded-lg p-3 text-center transition-all hover:bg-gray-50 hover:border-gray-400">
+               <a href="https://kinjo.manaba.jp/ct/home" target="_blank" class="bg-white border border-gray-200 rounded-lg p-3 text-center transition-all hover:bg-gray-50 hover:border-gray-400">
                     <span class="block text-xs font-bold text-[#111111]">manaba</span>
                     <span class="block text-[9px] text-gray-400 font-mono mt-0.5">Portal Site</span>
                 </a>
@@ -116,12 +161,8 @@
                     <span class="block text-xs font-bold text-[#111111]">--</span>
                     <span class="block text-[9px] text-gray-400 font-mono mt-0.5">Library OPAC</span>
                 </a>
-
             </div>
         </div>
-            </div> </main>
-
-    <footer class="border-t border-gray-200 bg-white py-4 text-center text-[10px] text-gray-400 tracking-wider">
     </main>
 
     <footer class="border-t border-gray-200 bg-white py-4 text-center text-[10px] text-gray-400 tracking-wider">
