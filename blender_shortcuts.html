@@ -36,7 +36,7 @@
         </a>
     </header>
 
-    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-grow flex flex-col items-center justify-center gap-6">
+    <main class="max-w-5xl w-full mx-auto px-6 py-8 flex-grow flex flex-col items-center justify-center gap-6">
         
         <div class="w-full bg-white border border-gray-200 rounded-xl p-1.5 flex flex-col sm:flex-row gap-1 text-xs font-bold shadow-sm">
             <button onclick="changeCategory('view')" id="tab-view" class="tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-[#2B54A4] text-white">
@@ -50,15 +50,15 @@
             </button>
         </div>
 
-        <div class="w-full flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8">
+        <div class="w-full flex flex-col md:flex-row items-stretch gap-6">
             
-            <div class="order-1 lg:order-2 w-full sm:w-[320px] shrink-0 bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div class="w-full md:w-[340px] shrink-0 bg-white border border-gray-200 rounded-xl p-4 shadow-sm flex flex-col">
                 <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">Shortcut List</h3>
-                <div id="shortcut-list" class="flex flex-col gap-1.5 text-xs">
+                <div id="shortcut-list" class="flex flex-col gap-1.5 text-xs flex-grow">
                     </div>
             </div>
 
-            <div class="order-2 lg:order-3 flex-grow w-full bg-white border border-gray-200 shadow-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between min-h-[300px] lg:min-h-[340px]">
+            <div class="flex-grow w-full bg-white border border-gray-200 shadow-sm rounded-xl p-6 md:p-8 flex flex-col justify-between min-h-[260px]">
                 <div>
                     <div class="flex items-center justify-between border-b border-gray-100 pb-4">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-2">
@@ -86,16 +86,6 @@
                             テンキーの「5」で透視投影（パース）と平行投影（Ortho）の切り替えが可能です。
                         </span>
                     </div>
-                </div>
-            </div>
-
-            <div class="order-3 lg:order-1 relative w-[340px] h-[240px] lg:w-[300px] lg:h-[340px] flex-shrink-0 flex items-center justify-center select-none bg-white rounded-xl border border-gray-200 shadow-sm">
-                <div class="absolute rounded-full border border-dashed border-gray-200 pointer-events-none w-[200px] h-[200px] lg:w-[240px] lg:h-[240px]"></div>
-
-                <div class="absolute w-[160px] h-[160px] lg:w-[180px] lg:h-[180px] rounded-full bg-slate-50 border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-3 z-10">
-                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Target Key</span>
-                    <span id="key-visual" class="text-xl font-black my-2 break-words max-w-[140px] lg:max-w-[160px] leading-tight" style="color: #2B54A4;">1 / 3 / 7</span>
-                    <span id="key-sub" class="text-[9px] text-gray-500 font-bold px-2 py-0.5 bg-white border border-gray-200 rounded shadow-sm uppercase tracking-wide">Numpad</span>
                 </div>
             </div>
 
@@ -129,7 +119,7 @@
                 { id: "a2", key: "F", label: "点と点から面を張る", origin: "Face", jp: "面の作成", desc: "編集モードで、隣り合う2つの頂点を選択してFを押すと「辺」を、3点以上選択してFを押すとその間に「面」を張ることができます。", tip: "グリッド状にきれいな曲面を張りたい場合は、ループを選んで「Ctrl + F」からGrid Fillを利用します。" },
                 { id: "a3", key: "K", label: "メッシュを切り裂くナイフ", origin: "Knife", jp: "ナイフツール", desc: "選択したポリゴン上でナイフを使って直感的に線を引くように、自由な形に切れ目（新しい辺）を入れて切り分けます。", tip: "Kを押して線を引き終わったら、必ずキーボードの「Enter」を押して切れ目を確定させます。" },
                 { id: "a4", key: "M", label: "離れた頂点の「結合/マージ」", origin: "Merge", jp: "マージ (頂点の結合)", desc: "編集モードで2つ以上のバラバラの頂点を選択し、「中心」「最初に選択した場所」「最後に選択した場所」などに結合します。", tip: "重なってしまった不要な頂点をまとめてクリーニングしたい時にも必須の操作です。" },
-                { id: "a5", key: "Ctrl + J", label: "別オブジェクトの「結合」", origin: "Join", jp: "オブジェクト結合", desc: "オブジェクトモードで、複数選択したバラバラのオブジェクトを1つの共有オブジェクトとして1ファイルに結合（Join）します。", tip: "モディファイアの設定を共通化させたい場合などに、グループとしてまとめるためによう用います Rhodes。" },
+                { id: "a5", key: "Ctrl + J", label: "別オブジェクトの「結合」", origin: "Join", jp: "オブジェクト結合", desc: "オブジェクトモードで、複数選択したバラバラのオブジェクトを1つの共有オブジェクトとして1ファイルに結合（Join）します。", tip: "モディファイアの設定を共通化させたい場合などに、グループとしてまとめるために利用します。" },
                 { id: "a6", key: "Alt + S", label: "法線に沿った拡大縮小", origin: "Shrink / Fatten", jp: "法線拡大縮小", desc: "編集モードにおいて、厚みのあるメッシュなどを均等に「膨らませる」または「しぼませる」ように拡大縮小します。", tip: "通常のSキーでの拡大だと比率が歪んでしまう立体物の、厚み変更・肉付けに最適です。" }
             ]
         };
@@ -143,4 +133,70 @@
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.className = "tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100";
             });
-            document.getElementById(`tab-${cat}`).className = "tab-btn flex-1 py-2 px-3 text-
+            document.getElementById(`tab-${cat}`).className = "tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-[#2B54A4] text-white";
+
+            const firstItem = shortcutData[cat][0];
+            selectShortcut(firstItem.id);
+        }
+
+        function renderList() {
+            const listContainer = document.getElementById('shortcut-list');
+            listContainer.innerHTML = '';
+
+            const listData = shortcutData[currentCategory];
+            listData.forEach(item => {
+                const isActive = (item.id === currentActiveId);
+                const itemClass = isActive 
+                    ? "shortcut-item p-2.5 rounded-lg flex items-center justify-between cursor-pointer bg-blue-50 font-bold text-black border-l-4" 
+                    : "shortcut-item p-2.5 rounded-lg flex items-center justify-between cursor-pointer hover:bg-gray-50 text-gray-700";
+                
+                const borderStyle = isActive ? "border-color: #2B54A4;" : "";
+                const keyColor = isActive ? "text-[#2B54A4]" : "text-gray-400 font-medium";
+
+                const row = document.createElement('div');
+                row.id = `item-${item.id}`;
+                row.className = itemClass;
+                row.setAttribute('style', borderStyle);
+                row.setAttribute('onclick', `selectShortcut('${item.id}')`);
+                row.innerHTML = `
+                    <span class="truncate pr-1">${item.label}</span>
+                    <span class="font-mono font-extrabold text-[11px] ${keyColor} shrink-0 bg-white px-2 py-0.5 border border-gray-200 rounded shadow-sm">${item.key}</span>
+                `;
+                listContainer.appendChild(row);
+            });
+        }
+
+        function selectShortcut(id) {
+            currentActiveId = id;
+            renderList();
+
+            const allItems = [...shortcutData.view, ...shortcutData.basic, ...shortcutData.advanced];
+            const data = allItems.find(item => item.id === id);
+
+            if (!data) return;
+
+            document.getElementById('detail-category').innerText = 
+                currentCategory === 'view' ? "視点操作" : 
+                currentCategory === 'basic' ? "必須基本" : "応用・便利";
+            document.getElementById('detail-jp').innerText = data.jp;
+            document.getElementById('detail-origin').innerText = `Origin: ${data.origin}`;
+            
+            const detailDesc = document.getElementById('detail-desc');
+            detailDesc.classList.remove('fade-in');
+            void detailDesc.offsetWidth; 
+            detailDesc.innerText = data.desc;
+            detailDesc.classList.add('fade-in');
+
+            document.getElementById('detail-tip').innerText = data.tip;
+        }
+
+        window.onload = function() {
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('3dcg')) {
+                document.getElementById('back-class-btn').setAttribute('href', '3dcg.html');
+            }
+            changeCategory('view');
+        };
+    </script>
+</body>
+</html>
