@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLENDER SHORTCUTS - 3DCG ARCHIVE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-btn {
+            transition: all 0.2s ease;
+        }
+
+        .shortcut-item {
+            transition: all 0.15s ease;
+        }
+
+        /* アニメーション用 */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-[#111111] font-sans antialiased min-h-screen flex flex-col justify-between tracking-wide">
+
+    <header class="border-b border-gray-200 bg-white px-6 py-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-base font-bold tracking-widest text-[#111111]">BLENDER SHORTCUTS</h1>
+            <p class="text-[10px] text-gray-400 font-medium tracking-wider uppercase mt-0.5">Quick Reference Cheat Sheet / 3DCG Class</p>
+        </div>
+        <a href="3dcg.html" id="back-class-btn" class="text-xs text-gray-400 hover:text-black uppercase tracking-widest transition-colors underline underline-offset-4">
+            Back to Topics
+        </a>
+    </header>
+
+    <main class="max-w-6xl w-full mx-auto px-6 py-8 flex-grow flex flex-col items-center justify-center gap-6">
+        
+        <div class="w-full bg-white border border-gray-200 rounded-xl p-1.5 flex flex-col sm:flex-row gap-1 text-xs font-bold shadow-sm">
+            <button onclick="changeCategory('view')" id="tab-view" class="tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-[#2B54A4] text-white">
+                ① 視点の操作
+            </button>
+            <button onclick="changeCategory('basic')" id="tab-basic" class="tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100">
+                ② 最低限のモデリング
+            </button>
+            <button onclick="changeCategory('advanced')" id="tab-advanced" class="tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100">
+                ③ 応用・便利操作
+            </button>
+        </div>
+
+        <div class="w-full flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8">
+            
+            <div class="order-1 relative w-[340px] h-[340px] lg:w-[300px] lg:h-[340px] flex-shrink-0 flex items-center justify-center select-none bg-white rounded-xl border border-gray-200 shadow-sm">
+                <div class="absolute rounded-full border border-dashed border-gray-200 pointer-events-none" style="width: 240px; height: 240px;"></div>
+
+                <div class="absolute w-[180px] h-[180px] rounded-full bg-slate-50 border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center p-3 z-10">
+                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Target Key</span>
+                    <span id="key-visual" class="text-xl font-black my-2 break-words max-w-[160px] leading-tight" style="color: #2B54A4;">1 / 3 / 7</span>
+                    <span id="key-sub" class="text-[9px] text-gray-500 font-bold px-2 py-0.5 bg-white border border-gray-200 rounded shadow-sm uppercase tracking-wide">Numpad</span>
+                </div>
+            </div>
+
+            <div class="order-2 lg:order-3 flex-grow w-full bg-white border border-gray-200 shadow-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between min-h-[300px] lg:min-h-[340px]">
+                <div>
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                            <span id="detail-category" class="px-3 py-1 rounded text-xs font-bold text-white uppercase tracking-wider block text-center" style="background-color: #2B54A4;">
+                                視点操作
+                            </span>
+                            <span id="detail-jp" class="text-xs font-bold text-gray-800 px-2 py-1 rounded bg-gray-100 text-center block">
+                                視点の切り替え
+                            </span>
+                        </div>
+                        <span id="detail-origin" class="text-xs font-mono font-bold text-gray-400 hidden sm:inline">
+                            Origin: Numpad 1, 3, 7
+                        </span>
+                    </div>
+                    
+                    <p id="detail-desc" class="text-sm text-gray-700 leading-relaxed font-normal mt-6 fade-in">
+                        テンキーを使用して視点を素早く平行投影へ切り替えます。「1」で正面、「3」で右側面、「7」で上面に。Ctrlキーを同時に押すとそれぞれ反対（背面、左側面、底面）に切り替わります。
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-dashed border-gray-200">
+                    <div class="flex items-start space-x-2">
+                        <span class="text-xs font-bold text-[#2B54A4] bg-blue-50 px-2 py-0.5 rounded shrink-0">Tips</span>
+                        <span id="detail-tip" class="text-xs font-medium text-gray-600 leading-relaxed">
+                            テンキーの「5」で透視投影（パース）と平行投影（Ortho）の切り替えが可能です。
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-3 lg:order-2 w-full sm:w-[320px] shrink-0 bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">Shortcut List</h3>
+                <div id="shortcut-list" class="flex flex-col gap-1.5 text-xs">
+                    </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-200 bg-white py-4 text-center text-[10px] text-gray-400 tracking-wider">
+        &copy; 3DCG DIGITAL ARCHIVE
+    </footer>
+
+    <script>
+        const shortcutData = {
+            view: [
+                { id: "v1", key: "1 / 3 / 7", label: "正面 / 右 / 上面からの視点", origin: "Numpad 1, 3, 7", jp: "視点の切り替え", desc: "テンキーを使って視点を瞬時に切り替えます。「1」で正面、「3」で右側面、「7」で上面に。Ctrlキーと同時押しすると、それぞれ真逆の視点になります。", tip: "テンキー「9」を入力すると、現在の視点の裏側にカメラが反転します。" },
+                { id: "v2", key: "0", label: "カメラ視点に切り替え", origin: "Camera View", jp: "カメラ表示", desc: "レンダリングされる画角を確認できる「カメラ視点」に切り替えます。もう一度押すと元の作業用視点に戻ります。", tip: "カメラ枠内で視点を動かしたい場合は、Nキーでサイドバーを開き「カメラをビューにロック」をチェックします。" },
+                { id: "v3", key: "2 / 4 / 6 / 8", label: "視点の回転（上下左右）", origin: "Rotate View", jp: "視点の回転", desc: "テンキーの「2, 4, 6, 8」を押すことで、マウス操作をせずに決まった角度ずつ視点を回転させることができます。", tip: "キーを何度もたたくことで、少しずつ細かく回転させることができます。" },
+                { id: "v4", key: "Ctrl + 2/4/6/8", label: "視点の平行移動", origin: "Pan View", jp: "視点の移動", desc: "Ctrlキーを押しながらテンキーの偶数キー（2, 4, 6, 8）を入力すると、視点中心を基準に画面を上下左右に平行移動させます。", tip: "マウスで行う「Shift + 中ホイールドラッグ」と同じ動きをキーボードで行えます。" },
+                { id: "v5", key: "5", label: "投影モードの切り替え", origin: "Orthographic / Perspective", jp: "平行投影・透視投影切り替え", desc: "歪みのないモデリングに適した「平行投影（Ortho）」と、肉眼に近い奥行き感のある「透視投影（Perspective）」を瞬時に切り替えます。", tip: "正確なパーツ配置を行うモデリング時は「平行投影」にして作業するのが鉄則です。" }
+            ],
+            basic: [
+                { id: "b1", key: "Tab", label: "オブジェクト/編集モードの切替", origin: "Tab (Toggle Mode)", jp: "モード切り替え", desc: "オブジェクトモード（全体の配置）と編集モード（頂点・辺・面の細かなモデリング）を瞬時に行き来します。", tip: "Blenderで最も多く使用する基本のショートカットです。" },
+                { id: "b2", key: "E", label: "頂点・辺・面の「押し出し」", origin: "Extrude", jp: "押し出し", desc: "編集モードで選択した頂点、辺、面を、新たな形状（立体）として引き延ばして押し出します。モデリングの基本中の基本です。", tip: "押し出し後に軸（X/Y/Z）を指定すると、その軸方向だけにまっすぐ押し出せます。" },
+                { id: "b3", key: "S", label: "オブジェクトの「拡大縮小」", origin: "Scale", jp: "スケール変更", desc: "選択したオブジェクトやメッシュのサイズを変更します。Sキーを押した後にマウスを動かすか、倍率数値を打ち込みます。", tip: "「S ➔ Z ➔ 0」と入力すると、選択した頂点のZ軸方向の高さを完璧にフラットに揃えられます。" },
+                { id: "b4", key: "G", label: "オブジェクトの「移動」", origin: "Grab", jp: "オブジェクト移動", desc: "選択した対象を掴んで（Grab）自由に動かします。マウスドラッグの代わりにキーを押したまま移動させます。", tip: "「G」の後に「X, Y, Z」キーを入力すると、特定の軸のみに移動を制限できます。" },
+                { id: "b5", key: "R", label: "オブジェクトの「回転」", origin: "Rotate", jp: "オブジェクト回転", desc: "選択したオブジェクトやエレメントを回転（Rotate）させます。こちらも軸指定と併用することが非常に多いです。", tip: "「R ➔ Z ➔ 90」と打ち込むと、Z軸を軸にきっかり90度だけ綺麗に回転します。" },
+                { id: "b6", key: "Shift + D", label: "オブジェクト/メッシュの複製", origin: "Duplicate", jp: "形状の複製", desc: "選択しているオブジェクト全体、あるいは編集モードで選択中のパーツ（頂点/面など）をその場で完全に複製します。", tip: "複製後、すぐにマウスを動かすと自由に移動できます。右クリックすると同じ座標に配置されます。" },
+                { id: "b7", key: "Ctrl + R", label: "辺を追加（ループカット）", origin: "Loop Cut and Slide", jp: "細分化", desc: "編集モードで、メッシュ全体をぐるりと一周切り裂くように新しい辺を追加（細分化）します。滑らかな造形をする前の下準備に使います。", tip: "Ctrl + Rを押した後、ホイールを回すと分割するカット数を増やせます。" }
+            ],
+            advanced: [
+                { id: "a1", key: "I", label: "面に厚みを差し込む", origin: "Inset", jp: "面の差し込み", desc: "編集モードで、選択した面の「内側」にひと回り小さな面を作成します。窓枠や凹凸構造を作りたい時に非常に便利です。", tip: "差し込んだ後、すぐに「E」キーで押し下げることで、簡単に引き出しや箱のようなくぼみを作れます。" },
+                { id: "a2", key: "F", label: "点と点から面を張る", origin: "Face", jp: "面の作成", desc: "編集モードで、隣り合う2つの頂点を選択してFを押すと「辺」を、3点以上選択してFを押すとその間に「面」を張ることができます。", tip: "グリッド状にきれいな曲面を張りたい場合は、ループを選んで「Ctrl + F」からGrid Fillを利用します。" },
+                { id: "a3", key: "K", label: "メッシュを切り裂くナイフ", origin: "Knife", jp: "ナイフツール", desc: "選択したポリゴン上でナイフを使って直感的に線を引くように、自由な形に切れ目（新しい辺）を入れて切り分けます。", tip: "Kを押して線を引き終わったら、必ずキーボードの「Enter」を押して切れ目を確定させます。" },
+                { id: "a4", key: "M", label: "離れた頂点の「結合/マージ」", origin: "Merge", jp: "マージ (頂点の結合)", desc: "編集モードで2つ以上のバラバラの頂点を選択し、「中心」「最初に選択した場所」「最後に選択した場所」などに結合します。", tip: "重なってしまった不要な頂点をまとめてクリーニングしたい時にも必須の操作です。" },
+                { id: "a5", key: "Ctrl + J", label: "別オブジェクトの「結合」", origin: "Join", jp: "オブジェクト結合", desc: "オブジェクトモードで、複数選択したバラバラのオブジェクトを1つの共有オブジェクトとして1ファイルに結合（Join）します。", tip: "モディファイアの設定を共通化させたい場合などに、グループとしてまとめるためによう用います。" },
+                { id: "a6", key: "Alt + S", label: "法線に沿った拡大縮小", origin: "Shrink / Fatten", jp: "法線拡大縮小", desc: "編集モードにおいて、厚みのあるメッシュなどを均等に「膨らませる」または「しぼませる」ように拡大縮小します。", tip: "通常のSキーでの拡大だと比率が歪んでしまう立体物の、厚み変更・肉付けに最適です。" }
+            ]
+        };
+
+        let currentCategory = 'view';
+        let currentActiveId = 'v1';
+
+        function changeCategory(cat) {
+            currentCategory = cat;
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100";
+            });
+            document.getElementById(`tab-${cat}`).className = "tab-btn flex-1 py-2 px-3 text-center rounded-lg bg-[#2B54A4] text-white";
+
+            const firstItem = shortcutData[cat][0];
+            selectShortcut(firstItem.id);
+        }
+
+        function renderList() {
+            const listContainer = document.getElementById('shortcut-list');
+            listContainer.innerHTML = '';
+
+            const listData = shortcutData[currentCategory];
+            listData.forEach(item => {
+                const isActive = (item.id === currentActiveId);
+                const itemClass = isActive 
+                    ? "shortcut-item p-2.5 rounded-lg flex items-center justify-between cursor-pointer bg-blue-50 font-bold text-black border-l-4" 
+                    : "shortcut-item p-2.5 rounded-lg flex items-center justify-between cursor-pointer hover:bg-gray-50 text-gray-700";
+                
+                const borderStyle = isActive ? "border-color: #2B54A4;" : "";
+                const keyColor = isActive ? "text-[#2B54A4]" : "text-gray-400 font-medium";
+
+                const row = document.createElement('div');
+                row.id = `item-${item.id}`;
+                row.className = itemClass;
+                row.setAttribute('style', borderStyle);
+                row.setAttribute('onclick', `selectShortcut('${item.id}')`);
+                row.innerHTML = `
+                    <span class="truncate pr-1">${item.label}</span>
+                    <span class="font-mono font-extrabold text-[11px] ${keyColor} shrink-0 bg-white px-2 py-0.5 border border-gray-200 rounded shadow-sm">${item.key}</span>
+                `;
+                listContainer.appendChild(row);
+            });
+        }
+
+        function selectShortcut(id) {
+            currentActiveId = id;
+            renderList();
+
+            const allItems = [...shortcutData.view, ...shortcutData.basic, ...shortcutData.advanced];
+            const data = allItems.find(item => item.id === id);
+
+            if (!data) return;
+
+            const keyVisual = document.getElementById('key-visual');
+            keyVisual.innerText = data.key;
+            
+            if (data.key.length > 10) {
+                keyVisual.className = "text-base font-black my-2 text-[#2B54A4] break-all max-w-[160px] leading-tight";
+            } else {
+                keyVisual.className = "text-xl font-black my-2 text-[#2B54A4] break-words max-w-[160px] leading-tight";
+            }
+            
+            document.getElementById('key-sub').innerText = data.origin.split(' ')[0].replace(/[^a-zA-Z]/g, '') || "KEY";
+
+            document.getElementById('detail-category').innerText = 
+                currentCategory === 'view' ? "視点操作" : 
+                currentCategory === 'basic' ? "必須基本" : "応用・便利";
+            document.getElementById('detail-jp').innerText = data.jp;
+            document.getElementById('detail-origin').innerText = `Origin: ${data.origin}`;
+            
+            const detailDesc = document.getElementById('detail-desc');
+            detailDesc.classList.remove('fade-in');
+            void detailDesc.offsetWidth; 
+            detailDesc.innerText = data.desc;
+            detailDesc.classList.add('fade-in');
+
+            document.getElementById('detail-tip').innerText = data.tip;
+        }
+
+        window.onload = function() {
+            // 親サイト（3dcg.html）のファイル名に自動対応させる簡易処理
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('3dcg')) {
+                document.getElementById('back-class-btn').setAttribute('href', '3dcg.html');
+            }
+            changeCategory('view');
+        };
+    </script>
+</body>
+</html>
